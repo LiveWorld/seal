@@ -24,7 +24,7 @@ class GithubFetcher
     pull_requests_from_github.each_with_object({}) do |pull_request, pull_requests|
       repo_name = pull_request.html_url.split("/")[4]
       next if hidden?(pull_request, repo_name)
-      pull_requests[pull_request.title] = present_pull_request(pull_request, repo_name)
+      pull_requests["#{pull_request.title} (#{pull_request.number})"] = present_pull_request(pull_request, repo_name)
     end
   end
 
